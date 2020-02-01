@@ -41,7 +41,7 @@ public class MainMenu : MonoBehaviour
         Debug.Log("You quited");
     }
     void Update () {
-        if (Input.GetKeyDown(KeyCode.Escape) || InputManager.Get(InputType.options, PlayerType.Player1, PressType.down) || InputManager.Get(InputType.options, PlayerType.Player2, PressType.down))
+        if (Input.GetKeyDown(KeyCode.Escape) || InputManager.GetEither(InputType.options,PressType.down))
         {
             //FMODUnity.RuntimeManager.PlayOneShot("event:/SFX/UIClick");
             if(GameIsPaused){
@@ -50,11 +50,11 @@ public class MainMenu : MonoBehaviour
                 Pause();
             }
         }
-        if (InputManager.Get(InputType.x, PlayerType.Player1, PressType.down) || InputManager.Get(InputType.x, PlayerType.Player2, PressType.down))
+        if (InputManager.GetEither(InputType.x, PressType.down))
         {
             Resume();
         }
-        if (InputManager.Get(InputType.circle, PlayerType.Player1, PressType.down) || InputManager.Get(InputType.circle, PlayerType.Player2, PressType.down))
+        if (InputManager.GetEither(InputType.circle, PressType.down))
         {
             GoMainMenu();
         }
