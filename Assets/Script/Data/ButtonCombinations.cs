@@ -8,8 +8,6 @@ public class ButtonCombinations : ScriptableObject
     [SerializeField] ButtonAction[] buttonCombinations;
 }
 
-public enum ButtonType { X, Square, Triangle, Circle };
-
 [System.Serializable]
 public class ButtonAction
 {
