@@ -3,7 +3,27 @@ guid: e03f37d4d6cd5ed41bf29c37361c8c74
 ModelImporter:
   serializedVersion: 19300
   internalIDToNameTable: []
-  externalObjects: {}
+  externalObjects:
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Conveyer
+    second: {fileID: 2100000, guid: d947ac9be40cfff498bc8ad90167b5f5, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Crate
+    second: {fileID: 2100000, guid: 54dd30a1a7a488c40bee1fb353bbf186, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Stuffs
+    second: {fileID: 2100000, guid: aac9f96a50ad4cb4f808e7460aaf71b4, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Wall
+    second: {fileID: 2100000, guid: 1df6a64af21bfd54798d73c24d59c133, type: 2}
   materials:
     materialImportMode: 1
     materialName: 0
