@@ -322,6 +322,37 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 91296292}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &239676169
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 239676170}
+  m_Layer: 0
+  m_Name: Steampunk Table
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &239676170
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 239676169}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 3.6981537, y: -5.8428645, z: -9.375011}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children:
+  - {fileID: 1594872899}
+  m_Father: {fileID: 0}
+  m_RootOrder: 4
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &383945400
 GameObject:
   m_ObjectHideFlags: 0
@@ -893,6 +924,111 @@ Transform:
   m_CorrespondingSourceObject: {fileID: -4216859302048453862, guid: 5b0b16409322b0f4bad67a47d67e591d,
     type: 3}
   m_PrefabInstance: {fileID: 1416898429}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1001 &1594872898
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 239676170}
+    m_Modifications:
+    - target: {fileID: -8049417985088614258, guid: a836382c8085d664d80d81e39ed296ed,
+        type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: f53bd8eeade7fa14bb105e03115454b9, type: 2}
+    - target: {fileID: -4216859302048453862, guid: a836382c8085d664d80d81e39ed296ed,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 10.021847
+      objectReference: {fileID: 0}
+    - target: {fileID: -4216859302048453862, guid: a836382c8085d664d80d81e39ed296ed,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 6.2828646
+      objectReference: {fileID: 0}
+    - target: {fileID: -4216859302048453862, guid: a836382c8085d664d80d81e39ed296ed,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 9.575011
+      objectReference: {fileID: 0}
+    - target: {fileID: -4216859302048453862, guid: a836382c8085d664d80d81e39ed296ed,
+        type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: -4216859302048453862, guid: a836382c8085d664d80d81e39ed296ed,
+        type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0.7031648
+      objectReference: {fileID: 0}
+    - target: {fileID: -4216859302048453862, guid: a836382c8085d664d80d81e39ed296ed,
+        type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: -4216859302048453862, guid: a836382c8085d664d80d81e39ed296ed,
+        type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 0.71102697
+      objectReference: {fileID: 0}
+    - target: {fileID: -4216859302048453862, guid: a836382c8085d664d80d81e39ed296ed,
+        type: 3}
+      propertyPath: m_RootOrder
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -4216859302048453862, guid: a836382c8085d664d80d81e39ed296ed,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -4216859302048453862, guid: a836382c8085d664d80d81e39ed296ed,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 89.36301
+      objectReference: {fileID: 0}
+    - target: {fileID: -4216859302048453862, guid: a836382c8085d664d80d81e39ed296ed,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -927199367670048503, guid: a836382c8085d664d80d81e39ed296ed,
+        type: 3}
+      propertyPath: m_Name
+      value: Steampunk Table
+      objectReference: {fileID: 0}
+    - target: {fileID: 218381518172488053, guid: a836382c8085d664d80d81e39ed296ed,
+        type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: b93c9fdd3d298f144a419b7cff08ff6b, type: 2}
+    - target: {fileID: 5261604538239724889, guid: a836382c8085d664d80d81e39ed296ed,
+        type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 7c3ba2a330b10ce46ae98d0a2a973eb1, type: 2}
+    - target: {fileID: 5261604538239724889, guid: a836382c8085d664d80d81e39ed296ed,
+        type: 3}
+      propertyPath: m_Materials.Array.data[1]
+      value: 
+      objectReference: {fileID: 2100000, guid: f53bd8eeade7fa14bb105e03115454b9, type: 2}
+    - target: {fileID: 6824900029390795227, guid: a836382c8085d664d80d81e39ed296ed,
+        type: 3}
+      propertyPath: m_Materials.Array.data[1]
+      value: 
+      objectReference: {fileID: 2100000, guid: 7c3ba2a330b10ce46ae98d0a2a973eb1, type: 2}
+    - target: {fileID: 6824900029390795227, guid: a836382c8085d664d80d81e39ed296ed,
+        type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: b250fdd383d69c043b9ed9bed89bc56d, type: 2}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: a836382c8085d664d80d81e39ed296ed, type: 3}
+--- !u!4 &1594872899 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: -4216859302048453862, guid: a836382c8085d664d80d81e39ed296ed,
+    type: 3}
+  m_PrefabInstance: {fileID: 1594872898}
   m_PrefabAsset: {fileID: 0}
 --- !u!1 &1966690561
 GameObject:
