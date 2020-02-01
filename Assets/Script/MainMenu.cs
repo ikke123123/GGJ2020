@@ -10,8 +10,8 @@ public class MainMenu : MonoBehaviour
     public GameObject playAgainUI;
     public GameObject player1;
     public GameObject player2;
-    public MovementAWSD Player1Check;
-    public MovementArrows Player2Check;
+    public Movement Player1Check;
+    public Movement Player2Check;
 
     private void Start() 
     {
@@ -41,7 +41,8 @@ public class MainMenu : MonoBehaviour
         Debug.Log("You quited");
     }
     void Update () {
-        if (Input.GetKeyDown(KeyCode.Escape)){
+        if (Input.GetKeyDown(KeyCode.Escape) || InputManager.Get(InputType.options, PlayerType.Player1, PressType.down) || InputManager.Get(InputType.options, PlayerType.Player2, PressType.down))
+        {
             //FMODUnity.RuntimeManager.PlayOneShot("event:/SFX/UIClick");
             if(GameIsPaused){
                 Resume();
@@ -49,8 +50,16 @@ public class MainMenu : MonoBehaviour
                 Pause();
             }
         }
+        if (InputManager.Get(InputType.x, PlayerType.Player1, PressType.down) || InputManager.Get(InputType.x, PlayerType.Player2, PressType.down))
+        {
+            Resume();
+        }
+        if (InputManager.Get(InputType.circle, PlayerType.Player1, PressType.down) || InputManager.Get(InputType.circle, PlayerType.Player2, PressType.down))
+        {
+            GoMainMenu();
+        }
         //Seizure check for ending game
-        if (Player1Check.seizurep1 == true && Player2Check.seizurep2 == true)
+        if (Player1Check.seizure == true && Player2Check.seizure == true)
         {
             playAgainUI.SetActive(true);
             Time.timeScale = 0f;
