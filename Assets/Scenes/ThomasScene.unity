@@ -336,44 +336,36 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1c87140ba0cf97942b7e6af7ba7a5194, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  player: 0
+  player: 1
   squareMarker: {fileID: 1685798853}
   background: {fileID: 646405699}
   spawnTime: 1
-  speed: 1
-  padding: 0
+  speed: 2
+  padding: 40
   prefab: {fileID: 7057998676382581701, guid: eef7973b3e354d345878f808dc5fea57, type: 3}
   disabled: 0
   borderRight: 150
-  borderLeft: 200
+  borderLeft: 100
   buttons:
   - player: 0
     buttonTypes:
-    - button: 0
-      keycode: 119
+    - inputType: 0
       sprite: {fileID: 21300000, guid: cb6f256a35200184bae2a7d3c4070b31, type: 3}
-    - button: 1
-      keycode: 115
+    - inputType: 0
       sprite: {fileID: 21300000, guid: b3b62a2f7ec65804cbca13c0ea6dc9c5, type: 3}
-    - button: 2
-      keycode: 100
+    - inputType: 0
       sprite: {fileID: 21300000, guid: ae20afccc0439544bb9ddbc480d10bb3, type: 3}
-    - button: 3
-      keycode: 97
+    - inputType: 0
       sprite: {fileID: 21300000, guid: 09263071f5a0b034d90bf353a70e1d3b, type: 3}
   - player: 1
     buttonTypes:
-    - button: 0
-      keycode: 119
+    - inputType: 3
       sprite: {fileID: 21300000, guid: bad202c01bd41d3499fa6b6f2679e857, type: 3}
-    - button: 1
-      keycode: 115
+    - inputType: 1
       sprite: {fileID: 21300000, guid: 81feb0c43b086fa44b964f0a12d3932d, type: 3}
-    - button: 2
-      keycode: 100
+    - inputType: 0
       sprite: {fileID: 21300000, guid: 1c4f5605aab7b5742b422923f07645d5, type: 3}
-    - button: 3
-      keycode: 97
+    - inputType: 2
       sprite: {fileID: 21300000, guid: c40232c8cd392334f9aaedadda0c082b, type: 3}
   markerRect:
     serializedVersion: 2
@@ -605,7 +597,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 800, y: -420}
+  m_AnchoredPosition: {x: 680, y: -420}
   m_SizeDelta: {x: 79.65024, y: 120}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1541093536
@@ -950,7 +942,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 800, y: -420}
+  m_AnchoredPosition: {x: 680, y: -420}
   m_SizeDelta: {x: 79.65024, y: 120}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1685798853

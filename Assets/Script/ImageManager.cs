@@ -38,11 +38,11 @@ public class ImageManager : MonoBehaviour
 
     private void Awake()
     {
-        timer = 5;
+        timer = 0;
         GetBounds(background, ref backgroundLeft, ref backgroundRight);
         SelectButtons();
         markerRect = new Rect(squareMarker.rectTransform.localPosition.x, squareMarker.rectTransform.localPosition.y, 1, squareMarker.rectTransform.rect.height);
-        spawnVector = new Vector3(backgroundLeft, background.rectTransform.localPosition.y, 0);
+        spawnVector = new Vector3(backgroundLeft + padding, background.rectTransform.localPosition.y, 0);
 
         Debug.Log(RectOverlap(squareMarker.rectTransform, markerRect));
     }
@@ -55,34 +55,34 @@ public class ImageManager : MonoBehaviour
             //Resets the timer
             timer += spawnTime;
             //Spawns new object
-            instantiatedImages.Add(SpawnObject(transform.parent, selectedOption));
+            instantiatedImages.Add(SpawnObject(transform, selectedOption));
         }
 
 
 
         //Managing object things
-        for (int i = 0; i < instantiatedImages.Count; i++)
-        {
-            bool destroy = false;
-            if (RectOverlap(instantiatedImages[i].gameObject.GetComponent<RectTransform>(), markerRect) && Input.GetKey(instantiatedImages[i].keyCode))
-            {
-                Debug.Log("key is pressed");
-                //ADD SCRIPT WHAT TO DO WHEN BUTTON PRESSED
-                destroy = true;
-            }
-            instantiatedImages[i].gameObject.GetComponent<Image>().color = CodeLibrary.ConvertToTransparent(instantiatedImages[i].gameObject.GetComponent<Image>().color, AlphaCalculator(instantiatedImages[i].gameObject.GetComponent<RectTransform>().localPosition.x - backgroundLeft, borderLeft + padding, backgroundRight - borderRight, backgroundRight));
-            if (instantiatedImages[i].gameObject.GetComponent<RectTransform>().localPosition.x >= backgroundRight)
-            {
-                //ADD SCRIPT HERE FOR KNOCKING THEM OUT
-                destroy = true;
-            }
-            //if (destroy)
-            //{
-            //    Destroy(instantiatedImages[i].gameObject);
-            //    i--;
-            //    instantiatedImages.Remove(instantiatedImages[i]);
-            //}
-        }
+        //for (int i = 0; i < instantiatedImages.Count; i++)
+        //{
+        //    bool destroy = false;
+        //    if (RectOverlap(instantiatedImages[i].gameObject.GetComponent<RectTransform>(), markerRect) && Input.GetKey(instantiatedImages[i].keyCode))
+        //    {
+        //        Debug.Log("key is pressed");
+        //        //ADD SCRIPT WHAT TO DO WHEN BUTTON PRESSED
+        //        destroy = true;
+        //    }
+        //    instantiatedImages[i].gameObject.GetComponent<Image>().color = CodeLibrary.ConvertToTransparent(instantiatedImages[i].gameObject.GetComponent<Image>().color, AlphaCalculator(instantiatedImages[i].gameObject.GetComponent<RectTransform>().localPosition.x - backgroundLeft, borderLeft + padding, backgroundRight - borderRight, backgroundRight));
+        //    if (instantiatedImages[i].gameObject.GetComponent<RectTransform>().localPosition.x >= backgroundRight)
+        //    {
+        //        //ADD SCRIPT HERE FOR KNOCKING THEM OUT
+        //        destroy = true;
+        //    }
+        //    //if (destroy)
+        //    //{
+        //    //    Destroy(instantiatedImages[i].gameObject);
+        //    //    i--;
+        //    //    instantiatedImages.Remove(instantiatedImages[i]);
+        //    //}
+        //}
     }
 
     //GameObjects will report when they reach the end
@@ -91,9 +91,12 @@ public class ImageManager : MonoBehaviour
 
     }
 
-    public void ReportOverlap(GameObject input)
+    public void ReportOverlap(GameObject input, InputType inputType)
     {
+        //if ()
+        //{
 
+        //}
     }
 
     private float AlphaCalculator(float locationX, float borderL, float borderR, float maxRight)
@@ -148,21 +151,24 @@ public class ImageManager : MonoBehaviour
 
         tempGameObject.GetComponent<Image>().sprite = buttonTypes[randomNum].sprite;
 
+        tempGameObject.GetComponent<ImageSpeed>().speed.x = speed;
+
         ImageReporting tempImageReporting = tempGameObject.GetComponent<ImageReporting>();
         tempImageReporting.rect = markerRect;
         tempImageReporting.maxX = borderRight;
         tempImageReporting.minX = borderLeft;
         tempImageReporting.imageManager = this;
+        
 
         FadeManager tempFadeManager = tempGameObject.AddComponent<FadeManager>();
         tempFadeManager.stopFadeX = spawnVector.x + borderLeft;
         tempFadeManager.startFadeX = backgroundRight - borderRight;
-        tempFadeManager.border = borderRight;
+        tempFadeManager.fadeEndStop = backgroundRight;
 
         InstantiatedImage tempInstantiatedImage = new InstantiatedImage
         {
             gameObject = tempGameObject,
-            keyCode = buttonTypes[randomNum].keycode
+            inputType = buttonTypes[randomNum].inputType
         };
         return tempInstantiatedImage;
     }
@@ -178,8 +184,7 @@ public class Buttons
 [System.Serializable]
 public class ButtonType
 {
-    [SerializeField] public InputType button;
-    [SerializeField] public KeyCode keycode;
+    [SerializeField] public InputType inputType;
     [SerializeField] public Sprite sprite;
 }
 
@@ -187,5 +192,5 @@ public class ButtonType
 public class InstantiatedImage
 {
     [SerializeField] public GameObject gameObject;
-    [SerializeField] public KeyCode keyCode;
+    [SerializeField] public InputType inputType;
 }
