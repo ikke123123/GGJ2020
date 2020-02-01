@@ -53,41 +53,55 @@ public class MovementAWSD : MonoBehaviour
         if (Input.GetKey(KeyCode.A))
         {
             rb.AddForce(-speed, 0, 0);
-            anim.SetBool("WalkingTriggerRight", false);
-            anim.SetBool("WalkingTriggerLeft", true);
-            anim.SetBool("WalkingTriggerUp", false);
+            transform.rotation = Quaternion.Euler(0, 270, 0);
+            anim.SetBool("Walking", true);
+            //anim.SetBool("WalkingTriggerRight", false);
+            //anim.SetBool("WalkingTriggerLeft", true);
+            //anim.SetBool("WalkingTriggerUp", false);
         }
         else if (Input.GetKey(KeyCode.D))
         {
             rb.AddForce(speed, 0, 0);
-            anim.SetBool("WalkingTriggerRight", true);
-            anim.SetBool("WalkingTriggerLeft", false);
-            anim.SetBool("WalkingTriggerUp", false);
+            transform.rotation = Quaternion.Euler(0, 90, 0);
+            anim.SetBool("Walking", true);
+            //anim.SetBool("WalkingTriggerLeft", false);
+            //anim.SetBool("WalkingTriggerUp", false);
         }
         else if (Input.GetKey(KeyCode.W))
         {
             rb.AddForce(0, 0, speed);
-            anim.SetBool("WalkingTriggerRight", false);
-            anim.SetBool("WalkingTriggerLeft", false);
-            anim.SetBool("WalkingTriggerUp", true);
+            transform.rotation = Quaternion.Euler(0, 0, 0);
+            anim.SetBool("Walking", true);
+            //anim.SetBool("WalkingTriggerRight", false);
+            //anim.SetBool("WalkingTriggerLeft", false);
+            //anim.SetBool("WalkingTriggerUp", true);
         }
         else if (Input.GetKey(KeyCode.S))
         {
             rb.AddForce(0, 0, -speed);
-            anim.SetBool("WalkingTriggerRight", false);
-            anim.SetBool("WalkingTriggerLeft", false);
-            anim.SetBool("WalkingTriggerUp", false);
+            transform.rotation = Quaternion.Euler(0, 180, 0);
+            anim.SetBool("Walking", true);
+            //anim.SetBool("WalkingTriggerRight", false);
+            //anim.SetBool("WalkingTriggerLeft", false);
+            //anim.SetBool("WalkingTriggerUp", false);
+        }else
+        {
+            transform.rotation = Quaternion.Euler(0, 180, 0);
+            anim.SetBool("Walking", false);
         }
         if (Input.GetKey(KeyCode.L))
         {
             seizurep1 = true;
+            anim.SetBool("FallenTrigger", true);
+            anim.SetBool("Walking", false);
         }
         if (seizurep1 == true)
         {
-            anim.SetBool("Seizure", true);
-            anim.SetBool("WalkingTriggerLeft", false);
-            anim.SetBool("WalkingTriggerUp", false);
-            anim.SetBool("WalkingTriggerRight", false);
+            speed = 0;
+        }
+        else if (seizurep1 == false)
+        {
+            speed = 20;
         }
     }
 }
