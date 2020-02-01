@@ -17,7 +17,18 @@ public class CodeLibrary : MonoBehaviour
     //Add getting median
     //Remapping values (if value is 2 on a scale from 1 to 10 and you want to remap it to 1 to 20 it would be 4)
     //Delete stuff from foreach loop
-        
+
+    public static bool RectOverlap(RectTransform input, Rect rectangle)
+    {
+        Rect rect1 = new Rect(input.localPosition.x, input.localPosition.y, input.rect.width, input.rect.height);
+        return rect1.Overlaps(rectangle);
+    }
+
+    public static float Remap(float input, float minCurrent, float maxCurrent, float minNew, float maxNew)
+    {
+        return (input - minCurrent) * (maxNew - minNew) / maxCurrent + minNew;
+    }
+
     public static Vector3 MaxVector3Size()
     {
         return new Vector3 { x = 10000, y = 10000, z = 10000 };

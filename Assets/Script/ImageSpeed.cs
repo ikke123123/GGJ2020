@@ -5,8 +5,7 @@ using UnityEngine.UI;
 
 public class ImageSpeed : MonoBehaviour
 {
-    [SerializeField] private Vector3 speed;
-    [SerializeField] private float xKill;
+    [SerializeField] public Vector3 speed;
 
     private RectTransform rectTransform;
 
@@ -17,7 +16,6 @@ public class ImageSpeed : MonoBehaviour
 
     private void FixedUpdate()
     {
-        if (rectTransform.position.x >= xKill) Destroy(gameObject);
         rectTransform.position += speed;
     }
 }
