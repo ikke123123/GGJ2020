@@ -9,6 +9,7 @@ public class ImageReporting : MonoBehaviour
     [HideInInspector] public ImageManager imageManager;
     [HideInInspector] public float minX;
     [HideInInspector] public float maxX;
+    [HideInInspector] public InputType inputType;
 
     private RectTransform rt;
 
@@ -25,7 +26,7 @@ public class ImageReporting : MonoBehaviour
         }
         if (CodeLibrary.RectOverlap(rt, rect))
         {
-            imageManager.ReportOverlap(gameObject);
+            imageManager.ReportOverlap(gameObject, inputType);
         }
     }
 }

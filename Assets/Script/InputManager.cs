@@ -4,6 +4,11 @@ using UnityEngine;
 
 public class InputManager : MonoBehaviour
 {
+    public static bool GetEither(InputType inputType, PressType pressType = PressType.continuous)
+    {
+        return Get(inputType, PlayerType.Player1, pressType) || Get(inputType, PlayerType.Player2, pressType);
+    }
+
     public static bool Get(InputType inputType, PlayerType playerType, PressType pressType = PressType.continuous)
     {
         if (playerType == PlayerType.Player1)

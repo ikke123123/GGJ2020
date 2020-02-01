@@ -26,7 +26,7 @@ public class CodeLibrary : MonoBehaviour
 
     public static float Remap(float input, float minCurrent, float maxCurrent, float minNew, float maxNew)
     {
-        return (input - minCurrent) * (maxNew - minNew) / maxCurrent + minNew;
+        return Mathf.Clamp((input - minCurrent) * (maxNew - minNew) / maxCurrent + minNew, minNew, maxNew);
     }
 
     public static Vector3 MaxVector3Size()
@@ -173,6 +173,11 @@ public class CodeLibrary : MonoBehaviour
         return input2;
     }
 
+    public static float Reverse(float input, float scale = 1)
+    {
+        return (input - 1) * -1;
+    }
+
     public static bool CheckSameObjectType(object input1, object input2)
     {
         if (input1.GetType() == input2.GetType())
@@ -203,8 +208,6 @@ public class CodeLibrary : MonoBehaviour
 
     public static Color ConvertToTransparent(Color input, float alpha)
     {
-        Color newColor = input;
-        newColor.a = alpha;
-        return newColor;
+        return new Color(input.r, input.g, input.b, alpha);
     }
 }
