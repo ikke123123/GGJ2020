@@ -7,53 +7,59 @@ public class MovementAWSD : MonoBehaviour
     public float speed;
     private Rigidbody rb;
     private Animator anim;
-    public bool seizure;
+    public bool seizurep1;
     private void Start()
     {
         rb = GetComponent<Rigidbody>();
         anim = GetComponent<Animator>();
+
     }
     void Update()
     {
-        if (Input.GetKey(KeyCode.A))
+        if (Input.GetAxis("Horizontal") > 0)
         {
-            rb.AddForce(-speed, 0, 0);
-            transform.rotation = Quaternion.Euler(0, -90, 0);
-            anim.SetBool("WalkingTriggerLeft", true);
-            anim.SetBool("WalkingTriggerRight", false);
-        }
-        else if (Input.GetKey(KeyCode.D))
-        {
-            rb.AddForce(speed, 0, 0);
-            transform.rotation = Quaternion.Euler(0, 90, 0);
+            rb.AddForce(Input.GetAxis("Horizontal") * speed, 0, 0);
             anim.SetBool("WalkingTriggerRight", true);
             anim.SetBool("WalkingTriggerLeft", false);
+            anim.SetBool("WalkingTriggerUp", false);
         }
-        else if (Input.GetKey(KeyCode.W))
+        else if (Input.GetAxis("Horizontal") < 0)
         {
-            rb.AddForce(0, 0, speed);
-            transform.rotation = Quaternion.Euler(0, 0, 0);
-            //anim.SetBool("WalkingTrigger", true);
-        }
-        else if (Input.GetKey(KeyCode.S))
-        {
-            rb.AddForce(0, 0, -speed);
-            transform.rotation = Quaternion.Euler(0, 180, 0);
-            //anim.SetBool("WalkingTrigger", true);
-        }
-        else
-        {
-            anim.SetBool("WalkingTriggerLeft", false);
+            rb.AddForce(Input.GetAxis("Horizontal") * speed, 0, 0);
+            anim.SetBool("WalkingTriggerLeft", true);
             anim.SetBool("WalkingTriggerRight", false);
+            anim.SetBool("WalkingTriggerUp", false);
         }
-        if (Input.GetKey(KeyCode.H))
+        else if (Input.GetAxis("Vertical") > 0)
         {
-            seizure = true;
+            rb.AddForce(0, 0, Input.GetAxis("Vertical") * speed);
+            anim.SetBool("WalkingTriggerRight", false);
+            anim.SetBool("WalkingTriggerLeft", false);
+            anim.SetBool("WalkingTriggerUp", true);
         }
-        if (seizure == true)
+        else if (Input.GetAxis("Vertical") < 0)
+        {
+            rb.AddForce(0, 0, Input.GetAxis("Vertical") * speed);
+            anim.SetBool("WalkingTriggerRight", false);
+            anim.SetBool("WalkingTriggerLeft", false);
+            anim.SetBool("WalkingTriggerUp", false);
+        }
+        else if (Input.GetAxis("Horizontal") == 0 || Input.GetAxis("Vertical") == 0)
+        {
+            anim.SetBool("WalkingTriggerRight", false);
+            anim.SetBool("WalkingTriggerLeft", false);
+            anim.SetBool("WalkingTriggerUp", false);
+        }
+        if (Input.GetKey(KeyCode.L))
+        {
+            seizurep1 = true;
+        }
+        if (seizurep1 == true)
         {
             anim.SetBool("Seizure", true);
+            anim.SetBool("WalkingTriggerLeft", false);
+            anim.SetBool("WalkingTriggerUp", false);
+            anim.SetBool("WalkingTriggerRight", false);
         }
     }
-
 }

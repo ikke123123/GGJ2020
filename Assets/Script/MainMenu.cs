@@ -50,12 +50,12 @@ public class MainMenu : MonoBehaviour
             }
         }
         //Seizure check for ending game
-        //if (Player1Check.seizure == true && Player2Check.seizure == true)
-        //{
-        //    playAgainUI.SetActive(true);
-        //    Time.timeScale = 0f;
-        //    GameIsPaused = true;
-        //}
+        if (Player1Check.seizurep1 == true && Player2Check.seizurep2 == true)
+        {
+            playAgainUI.SetActive(true);
+            Time.timeScale = 0f;
+            GameIsPaused = true;
+        }
     }
     public void Resume(){
         //FMODUnity.RuntimeManager.PlayOneShot("event:/SFX/UIClick");

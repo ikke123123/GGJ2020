@@ -7,7 +7,7 @@ public class MovementArrows : MonoBehaviour
     public float speed;
     private Rigidbody rb;
     private Animator anim;
-    public bool seizure;
+    public bool seizurep2;
 
     private void Start()
     {
@@ -41,11 +41,11 @@ public class MovementArrows : MonoBehaviour
             //anim.SetBool("WalkingTrigger", true);
         }
         //else anim.SetBool("WalkingTrigger", false);
-        if (Input.GetKey(KeyCode.H))
+        if (Input.GetKey(KeyCode.K))
         {
-            seizure = true;
+            seizurep2 = true;
         }
-        if (seizure == true)
+        if (seizurep2 == true)
         {
             anim.SetBool("Seizure", true);
         }
