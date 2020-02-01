@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<objects serializationModel="Studio.02.00.00">
+	<object class="AudioFile" id="{642b2581-63bc-4f4d-a3f7-684996e8c13c}">
+		<property name="assetPath">
+			<value>SFX/Repair Sounds/Hammering 2.wav</value>
+		</property>
+		<property name="frequencyInKHz">
+			<value>48</value>
+		</property>
+		<property name="channelCount">
+			<value>2</value>
+		</property>
+		<property name="length">
+			<value>3.7953958333333335</value>
+		</property>
+		<relationship name="masterAssetFolder">
+			<destination>{1fa106e8-65b2-4e51-9da9-460b48088c16}</destination>
+		</relationship>
+	</object>
+</objects>

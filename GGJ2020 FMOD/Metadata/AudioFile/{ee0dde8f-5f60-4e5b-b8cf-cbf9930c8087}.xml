@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<objects serializationModel="Studio.02.00.00">
+	<object class="AudioFile" id="{ee0dde8f-5f60-4e5b-b8cf-cbf9930c8087}">
+		<property name="assetPath">
+			<value>SFX/Repair Sounds/Drill 5.wav</value>
+		</property>
+		<property name="frequencyInKHz">
+			<value>48</value>
+		</property>
+		<property name="channelCount">
+			<value>2</value>
+		</property>
+		<property name="length">
+			<value>0.89614583333333331</value>
+		</property>
+		<relationship name="masterAssetFolder">
+			<destination>{1fa106e8-65b2-4e51-9da9-460b48088c16}</destination>
+		</relationship>
+	</object>
+</objects>
