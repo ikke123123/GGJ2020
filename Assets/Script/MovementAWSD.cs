@@ -56,7 +56,7 @@ public class MovementAWSD : MonoBehaviour
         }
         else if (seizurep1 == false)
         {
-            speed = 80;
+            speed = 100;
         }
     }
 }
