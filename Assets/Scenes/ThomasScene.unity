@@ -346,6 +346,7 @@ MonoBehaviour:
   disabled: 0
   borderRight: 150
   borderLeft: 100
+  keysAllowed: 00000000010000000200000003000000
   buttons:
   - player: 0
     buttonTypes:
@@ -367,6 +368,7 @@ MonoBehaviour:
       sprite: {fileID: 21300000, guid: 1c4f5605aab7b5742b422923f07645d5, type: 3}
     - inputType: 2
       sprite: {fileID: 21300000, guid: c40232c8cd392334f9aaedadda0c082b, type: 3}
+  difficultyLevel: 0
   markerRect:
     serializedVersion: 2
     x: 0
