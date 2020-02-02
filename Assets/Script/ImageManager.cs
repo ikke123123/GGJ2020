@@ -22,10 +22,18 @@ public class ImageManager : MonoBehaviour
     [SerializeField] private float borderRight;
     [SerializeField] private float borderLeft;
 
+    [Header("Checking and Destroying")]
+    [SerializeField] private Movement
+    [SerializeField] private InputType[] keysAllowed;
+
+    //[Header("Playability Settings")]
+    //[SerializeField] private 
+
     [Header("Don't Touch")]
     [SerializeField] private Buttons[] buttons;
 
     [Header("Debug")]
+    [SerializeField] private float difficultyLevel;
     [SerializeField] private Rect markerRect;
     [SerializeField] private float backgroundLeft;
     [SerializeField] private float backgroundRight;
@@ -57,35 +65,9 @@ public class ImageManager : MonoBehaviour
             //Spawns new object
             instantiatedImages.Add(SpawnObject(transform, selectedOption));
         }
-
-
-
-        //Managing object things
-        //for (int i = 0; i < instantiatedImages.Count; i++)
-        //{
-        //    bool destroy = false;
-        //    if (RectOverlap(instantiatedImages[i].gameObject.GetComponent<RectTransform>(), markerRect) && Input.GetKey(instantiatedImages[i].keyCode))
-        //    {
-        //        Debug.Log("key is pressed");
-        //        //ADD SCRIPT WHAT TO DO WHEN BUTTON PRESSED
-        //        destroy = true;
-        //    }
-        //    instantiatedImages[i].gameObject.GetComponent<Image>().color = CodeLibrary.ConvertToTransparent(instantiatedImages[i].gameObject.GetComponent<Image>().color, AlphaCalculator(instantiatedImages[i].gameObject.GetComponent<RectTransform>().localPosition.x - backgroundLeft, borderLeft + padding, backgroundRight - borderRight, backgroundRight));
-        //    if (instantiatedImages[i].gameObject.GetComponent<RectTransform>().localPosition.x >= backgroundRight)
-        //    {
-        //        //ADD SCRIPT HERE FOR KNOCKING THEM OUT
-        //        destroy = true;
-        //    }
-        //    //if (destroy)
-        //    //{
-        //    //    Destroy(instantiatedImages[i].gameObject);
-        //    //    i--;
-        //    //    instantiatedImages.Remove(instantiatedImages[i]);
-        //    //}
-        //}
     }
 
-    //GameObjects will report when they reach the end
+    //GameObjects will report when the object has not been destroyed at the end
     public void ReachedEnd(GameObject input)
     {
 
