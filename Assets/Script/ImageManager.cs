@@ -23,17 +23,16 @@ public class ImageManager : MonoBehaviour
     [SerializeField] private float borderLeft;
 
     [Header("Checking and Destroying")]
-    [SerializeField] private Movement
-    [SerializeField] private InputType[] keysAllowed;
-
-    //[Header("Playability Settings")]
-    //[SerializeField] private 
+    [SerializeField] private InputType[] inputTypes;
+    [SerializeField] private Movement player1;
+    [SerializeField] private Movement player2;
 
     [Header("Don't Touch")]
     [SerializeField] private Buttons[] buttons;
 
     [Header("Debug")]
-    [SerializeField] private float difficultyLevel;
+    [SerializeField] private int difficultyLevel;
+    [SerializeField] private int blocksToGo;
     [SerializeField] private Rect markerRect;
     [SerializeField] private float backgroundLeft;
     [SerializeField] private float backgroundRight;
@@ -41,7 +40,7 @@ public class ImageManager : MonoBehaviour
     [SerializeField] private Quaternion spawnQuaternion = new Quaternion(0, 0, 0, 0);
     [SerializeField] private float verticalCenter;
     [SerializeField] private ButtonType[] selectedOption;
-    [SerializeField] private List<InstantiatedImage> instantiatedImages;
+    [SerializeField] private List<GameObject> instantiatedImages;
     [SerializeField] private float timer;
 
     private void Awake()
@@ -51,8 +50,8 @@ public class ImageManager : MonoBehaviour
         SelectButtons();
         markerRect = new Rect(squareMarker.rectTransform.localPosition.x, squareMarker.rectTransform.localPosition.y, 1, squareMarker.rectTransform.rect.height);
         spawnVector = new Vector3(backgroundLeft + padding, background.rectTransform.localPosition.y, 0);
-
-        Debug.Log(RectOverlap(squareMarker.rectTransform, markerRect));
+        difficultyLevel = 1;
+        NewRound();
     }
 
     private void FixedUpdate()
@@ -63,32 +62,98 @@ public class ImageManager : MonoBehaviour
             //Resets the timer
             timer += spawnTime;
             //Spawns new object
-            instantiatedImages.Add(SpawnObject(transform, selectedOption));
+            SpawnObject();
+        }
+        if (disabled == true)
+        {
+            timer = Time.time + spawnTime;
+        }
+        if (player1.seizure == false && player2.seizure == false)
+        {
+            disabled = false;
         }
     }
 
     //GameObjects will report when the object has not been destroyed at the end
     public void ReachedEnd(GameObject input)
     {
-
+        ActivateSeizure();
+        DestroyThing(input);
     }
 
     public void ReportOverlap(GameObject input, InputType inputType)
     {
-        //if ()
-        //{
+        List<InputType> tempInputTypes = new List<InputType>();
+        tempInputTypes.AddRange(inputTypes);
+        tempInputTypes.Remove(inputType);
 
-        //}
+        foreach (InputType type in tempInputTypes)
+        {
+            if (InputManager.Get(inputType, player, PressType.down))
+            {
+                DestroyThing(input);
+                ActivateSeizure();
+            }
+        }
+
+        if (InputManager.Get(inputType, player, PressType.down))
+        {
+            DestroyThing(input);
+            GoodClick();
+        }
     }
 
-    private float AlphaCalculator(float locationX, float borderL, float borderR, float maxRight)
+    private void DestroyThing(GameObject input)
     {
-        if (locationX >= borderL)
+        instantiatedImages.Remove(input);
+        Destroy(input);
+    }
+
+    //To Do When Succeeds
+    private void GoodClick()
+    {
+        FMODUnity.RuntimeManager.PlayOneShot("event:/Hammer");
+        if (blocksToGo == 0)
         {
-            if (locationX <= borderR) return 1;
-            return CodeLibrary.Remap(locationX, borderR, maxRight, 0, 1);
+            difficultyLevel++;
+            NewRound();
         }
-        return CodeLibrary.Remap(locationX, 0, borderL, 0, 1);
+        else
+        {
+            blocksToGo--;
+        }
+    }
+
+    //To Do When It Fails
+    private void BadClick()
+    {
+
+    }
+
+    private void NewRound()
+    {
+        blocksToGo = difficultyLevel * 5;
+    }
+
+    private void ActivateSeizure()
+    {
+        BadClick();
+        DestroyAllObjects();
+        disabled = true;
+        if (player == PlayerType.Player1)
+        {
+            player1.seizure = true;
+            return;
+        }
+        player2.seizure = true;
+    }
+
+    private void DestroyAllObjects()
+    {
+        foreach (GameObject gameobject in instantiatedImages)
+        {
+            DestroyThing(gameobject);
+        }
     }
 
     private void GetBounds(Image input, ref float leftBound, ref float rightBound)
@@ -117,21 +182,15 @@ public class ImageManager : MonoBehaviour
         Debug.LogError("Error, this shouldn't happen.");
     }
 
-    private bool RectOverlap(RectTransform input, Rect rectangle)
+    public void SpawnObject()
     {
-        Rect rect1 = new Rect(input.localPosition.x, input.localPosition.y, input.rect.width, input.rect.height);
-        return rect1.Overlaps(rectangle);
-    }
+        int randomNum = Random.Range(0, selectedOption.Length);
 
-    public InstantiatedImage SpawnObject(Transform parent, ButtonType[] buttonTypes)
-    {
-        int randomNum = Random.Range(0, buttonTypes.Length);
-
-        GameObject tempGameObject = Instantiate(prefab, parent);
+        GameObject tempGameObject = Instantiate(prefab, transform);
         tempGameObject.GetComponent<RectTransform>().localPosition = spawnVector;
         tempGameObject.GetComponent<RectTransform>().localRotation = spawnQuaternion;
 
-        tempGameObject.GetComponent<Image>().sprite = buttonTypes[randomNum].sprite;
+        tempGameObject.GetComponent<Image>().sprite = selectedOption[randomNum].sprite;
 
         tempGameObject.GetComponent<ImageSpeed>().speed.x = speed;
 
@@ -147,12 +206,7 @@ public class ImageManager : MonoBehaviour
         tempFadeManager.startFadeX = backgroundRight - borderRight;
         tempFadeManager.fadeEndStop = backgroundRight;
 
-        InstantiatedImage tempInstantiatedImage = new InstantiatedImage
-        {
-            gameObject = tempGameObject,
-            inputType = buttonTypes[randomNum].inputType
-        };
-        return tempInstantiatedImage;
+        instantiatedImages.Add(tempGameObject);
     }
 }
 
@@ -168,11 +222,4 @@ public class ButtonType
 {
     [SerializeField] public InputType inputType;
     [SerializeField] public Sprite sprite;
-}
-
-[System.Serializable]
-public class InstantiatedImage
-{
-    [SerializeField] public GameObject gameObject;
-    [SerializeField] public InputType inputType;
 }
