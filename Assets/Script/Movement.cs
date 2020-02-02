@@ -18,21 +18,17 @@ public class Movement : MonoBehaviour
     private RaycastHit rh;
     private float distance = 0.3f;
     public LayerMask lm;
-    void UpdateStatus()
-    {
-        
-    }
+ 
     void PlayRunEvent(string EventPath)
     {
         MaterialCheck();
-        FMOD.Studio.EventInstance Run = FMODUnity.RuntimeManager.CreateInstance("event:/Footsteps");
+        FMOD.Studio.EventInstance Run = FMODUnity.RuntimeManager.CreateInstance("event:/Footsteps2D");
         FMODUnity.RuntimeManager.AttachInstanceToGameObject(Run, transform, GetComponent<Rigidbody>());
         Run.setParameterByName("Material", MaterialValue, false);
         InvokeRepeating("CallFootsteps", 0, walkingspeed);
     }
     void CallFootsteps()
     {
-        UpdateStatus();
         Run.start();
     }
     void MaterialCheck()
@@ -60,8 +56,7 @@ public class Movement : MonoBehaviour
             transform.rotation = Quaternion.Euler(0, 0, 0);
         }
         walkingspeed = 0.23f;
-        InvokeRepeating("CallFootsteps", 0, walkingspeed);
-        Run = FMODUnity.RuntimeManager.CreateInstance("event:/Footsteps");
+        Run = FMODUnity.RuntimeManager.CreateInstance("event:/Footsteps2D");
     }
     void FixedUpdate()
     {
@@ -70,7 +65,6 @@ public class Movement : MonoBehaviour
             rb.AddForce(-speed, 0, 0);
             transform.rotation = Quaternion.Euler(0, 270, 0);
             anim.SetBool("Walking", true);
-
         }
         else if (InputManager.Get(InputType.right, player))
         {
