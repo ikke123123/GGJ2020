@@ -20,7 +20,7 @@ public class ImageReporting : MonoBehaviour
 
     private void Update()
     {
-        if (rt.localPosition.x >= maxX)
+        if (rt.localPosition.x > maxX)
         {
             imageManager.ReachedEnd(gameObject);
         }

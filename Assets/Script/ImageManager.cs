@@ -12,7 +12,6 @@ public class ImageManager : MonoBehaviour
     [SerializeField] private Image background;
 
     [Header("Spawning")]
-    [SerializeField] private float spawnTime;
     [SerializeField] private float speed;
     [SerializeField] private float padding;
     [SerializeField] private GameObject prefab;
@@ -60,18 +59,14 @@ public class ImageManager : MonoBehaviour
         if (Time.time >= timer && disabled == false)
         {
             //Resets the timer
-            timer += spawnTime;
+            timer = Time.time + Random.Range(0.75f, 3);
             //Spawns new object
             SpawnObject();
         }
-        if (disabled == true)
-        {
-            timer = Time.time + spawnTime;
-        }
-        if (player1.seizure == false && player2.seizure == false)
-        {
-            disabled = false;
-        }
+        //if (player1.seizure == false && player2.seizure == false)
+        //{
+        //    disabled = false;
+        //}
     }
 
     //GameObjects will report when the object has not been destroyed at the end
@@ -106,7 +101,7 @@ public class ImageManager : MonoBehaviour
     private void DestroyThing(GameObject input)
     {
         instantiatedImages.Remove(input);
-        Destroy(input);
+        input.GetComponent<FadeManager>().selfDestruct = true;
     }
 
     //To Do When Succeeds
@@ -130,6 +125,14 @@ public class ImageManager : MonoBehaviour
 
     }
 
+    private void SetSpeed(float input)
+    {
+        foreach (GameObject gameobject in instantiatedImages)
+        {
+            gameobject.GetComponent<ImageSpeed>().speed.x = input;
+        }
+    }
+
     private void NewRound()
     {
         blocksToGo = difficultyLevel * 5;
@@ -145,15 +148,18 @@ public class ImageManager : MonoBehaviour
             player1.seizure = true;
             return;
         }
-        player2.seizure = true;
+        //player2.seizure = true;
     }
 
     private void DestroyAllObjects()
     {
-        foreach (GameObject gameobject in instantiatedImages)
+        GameObject[] gameObjects = instantiatedImages.ToArray();
+        for (int i = 0; i < gameObjects.Length; i++)
         {
-            DestroyThing(gameobject);
+            gameObjects[i].GetComponent<FadeManager>().selfDestruct = true;
+            Destroy(gameObjects[i]);
         }
+        instantiatedImages.Clear();
     }
 
     private void GetBounds(Image input, ref float leftBound, ref float rightBound)
@@ -196,8 +202,8 @@ public class ImageManager : MonoBehaviour
 
         ImageReporting tempImageReporting = tempGameObject.GetComponent<ImageReporting>();
         tempImageReporting.rect = markerRect;
-        tempImageReporting.maxX = borderRight;
-        tempImageReporting.minX = borderLeft;
+        tempImageReporting.maxX = backgroundRight;
+        tempImageReporting.minX = backgroundLeft;
         tempImageReporting.imageManager = this;
         
 
