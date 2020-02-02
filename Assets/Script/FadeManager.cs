@@ -8,10 +8,12 @@ public class FadeManager : MonoBehaviour
     [HideInInspector] public float stopFadeX;
     [HideInInspector] public float startFadeX;
     [HideInInspector] public float fadeEndStop;
+    [HideInInspector] public bool selfDestruct = false;
 
     private float startX;
     private RectTransform rt;
     private Image image;
+    private bool firstRun = true;
 
     private void OnEnable()
     {
@@ -34,15 +36,20 @@ public class FadeManager : MonoBehaviour
         {
             image.color = CodeLibrary.ConvertToTransparent(image.color, 1);
         }
-        
-        //if (rt.localPosition.x > )
-        //{
 
-        //}
-        //if (rt.localPosition.x > stopFadeX)
-        //{
-        //    image.color = CodeLibrary.ConvertToTransparent(image.color, 1);
-        //    startX = startFadeX;
-        //}
+        if (selfDestruct)
+        {
+            if (firstRun)
+            {
+                startX = rt.localPosition.x;
+                stopFadeX = rt.localPosition.x + 100;
+                firstRun = false;
+            }
+            image.color = CodeLibrary.ConvertToTransparent(image.color, CodeLibrary.Reverse(CodeLibrary.Remap(rt.localPosition.x, startX, stopFadeX, 0, 1f)));
+            if (image.color.a == 0)
+            {
+                Destroy(gameObject);
+            }
+        }
     }
 }
