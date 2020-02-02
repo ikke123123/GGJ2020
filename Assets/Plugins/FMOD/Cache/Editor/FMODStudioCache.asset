@@ -14,11 +14,28 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Path: GGJ2020 FMOD/Build/Desktop/Master.strings.bank
   SubDir: 
-  lastModified: 637161877520000000
+  lastModified: 637162027899698159
   LoadResult: 0
   FileSizes:
   - Name: Desktop
     Value: 1042
+  Exists: 1
+--- !u!114 &-4105834202497999067
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
+  m_Name: parameter:/Footsteps/Material
+  m_EditorClassIdentifier: 
+  Name: Material
+  Min: 1
+  Max: 3
+  Default: 1
   Exists: 1
 --- !u!114 &-3767401275724428989
 MonoBehaviour:
@@ -52,7 +69,7 @@ MonoBehaviour:
   Path: event:/Hammer
   guid: f25039b91f7f484aad77e70b6999a64b
   Banks:
-  - {fileID: 8920128319461024124}
+  - {fileID: -3019340443731325012}
   IsStream: 0
   Is3D: 1
   IsOneShot: 1
@@ -60,6 +77,24 @@ MonoBehaviour:
   MinDistance: 1
   MaxDistance: 20
   Length: 1276
+--- !u!114 &-3019340443731325012
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c18180ecb35941f4682ae60107b85b7c, type: 3}
+  m_Name: bank:/Master.bank
+  m_EditorClassIdentifier: 
+  Path: GGJ2020 FMOD/Build/Desktop/Master.bank
+  SubDir: 
+  lastModified: 637162027899678215
+  LoadResult: 0
+  FileSizes: []
+  Exists: 1
 --- !u!114 &-1488505360340640160
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -75,7 +110,7 @@ MonoBehaviour:
   Path: event:/GamePlayMusic
   guid: 10032ab9e30aed4489ab9f5208f8fe9f
   Banks:
-  - {fileID: 8920128319461024124}
+  - {fileID: -3019340443731325012}
   IsStream: 1
   Is3D: 0
   IsOneShot: 0
@@ -98,12 +133,12 @@ MonoBehaviour:
   Path: event:/Footsteps
   guid: 3f69fa6bc8c3864395686761b078a5ac
   Banks:
-  - {fileID: 8920128319461024124}
+  - {fileID: -3019340443731325012}
   IsStream: 0
   Is3D: 1
   IsOneShot: 1
   Parameters:
-  - {fileID: 8553283477157256860}
+  - {fileID: -4105834202497999067}
   MinDistance: 1
   MaxDistance: 20
   Length: 0
@@ -121,7 +156,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   EditorBanks:
   - {fileID: -6052097267193815096}
-  - {fileID: 8920128319461024124}
+  - {fileID: -3019340443731325012}
   EditorEvents:
   - {fileID: -1488505360340640160}
   - {fileID: -756832572223150521}
@@ -132,10 +167,10 @@ MonoBehaviour:
   - {fileID: -3621467503243960820}
   EditorParameters: []
   MasterBanks:
-  - {fileID: 8920128319461024124}
+  - {fileID: -3019340443731325012}
   StringsBanks:
   - {fileID: -6052097267193815096}
-  stringsBankWriteTime: 637161877520000000
+  stringsBankWriteTime: 637162027899698159
   cacheVersion: 3
 --- !u!114 &1171416929919172114
 MonoBehaviour:
@@ -170,7 +205,7 @@ MonoBehaviour:
   Path: event:/Conveyor Belt
   guid: 4cb1adee3ac0854d9c7c311616535226
   Banks:
-  - {fileID: 8920128319461024124}
+  - {fileID: -3019340443731325012}
   IsStream: 0
   Is3D: 1
   IsOneShot: 1
@@ -193,7 +228,7 @@ MonoBehaviour:
   Path: event:/Success
   guid: 693a708edde8c54a8f3f3982a5058c09
   Banks:
-  - {fileID: 8920128319461024124}
+  - {fileID: -3019340443731325012}
   IsStream: 0
   Is3D: 1
   IsOneShot: 1
@@ -216,7 +251,7 @@ MonoBehaviour:
   Path: event:/Repairing
   guid: c52d8a1ec1e00f459015b3540137b363
   Banks:
-  - {fileID: 8920128319461024124}
+  - {fileID: -3019340443731325012}
   IsStream: 0
   Is3D: 1
   IsOneShot: 1
@@ -239,7 +274,7 @@ MonoBehaviour:
   Path: event:/Electrocute
   guid: a160137b6b5318418fb8a6a301aa7f14
   Banks:
-  - {fileID: 8920128319461024124}
+  - {fileID: -3019340443731325012}
   IsStream: 0
   Is3D: 1
   IsOneShot: 1
@@ -263,7 +298,7 @@ MonoBehaviour:
   Min: 1
   Max: 3
   Default: 1
-  Exists: 1
+  Exists: 0
 --- !u!114 &8920128319461024124
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -281,4 +316,4 @@ MonoBehaviour:
   lastModified: 637161877520000000
   LoadResult: 0
   FileSizes: []
-  Exists: 1
+  Exists: 0
