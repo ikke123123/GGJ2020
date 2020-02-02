@@ -9,11 +9,18 @@ public class Movement : MonoBehaviour
     private Rigidbody rb;
     private Animator anim;
     public bool seizure;
+    private bool check = false;
 
     private void Start()
     {
         rb = GetComponent<Rigidbody>();
         anim = GetComponent<Animator>();
+        if (seizure == true)
+        {
+            speed = 0;
+            anim.SetBool("FallenTrigger", true);
+            transform.rotation = Quaternion.Euler(0, 0, 0);
+        }
     }
     void FixedUpdate()
     {
@@ -60,6 +67,17 @@ public class Movement : MonoBehaviour
         else if (seizure == false)
         {
             speed = 400;
+        }
+    }
+    private void Update()
+    {
+        if (seizure == true)
+        {
+            if (check == false)
+            {
+                FMODUnity.RuntimeManager.PlayOneShot("event:/Electrocute");
+                check = true;
+            }
         }
     }
 }

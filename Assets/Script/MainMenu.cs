@@ -15,6 +15,7 @@ public class MainMenu : MonoBehaviour
 
     private void Start() 
     {
+        Resume();
         player1 = GameObject.Find("Player1");
         player2 = GameObject.Find("Player2");
     }
@@ -43,6 +44,7 @@ public class MainMenu : MonoBehaviour
     void Update () {
         if (Input.GetKeyDown(KeyCode.Escape) || InputManager.GetEither(InputType.options,PressType.down))
         {
+            FMODUnity.RuntimeManager.PlayOneShot("event:/UI Click");
             //FMODUnity.RuntimeManager.PlayOneShot("event:/SFX/UIClick");
             if(GameIsPaused){
                 Resume();
@@ -50,13 +52,19 @@ public class MainMenu : MonoBehaviour
                 Pause();
             }
         }
-        if (InputManager.GetEither(InputType.x, PressType.down))
+        if (GameIsPaused)
         {
-            Resume();
-        }
-        if (InputManager.GetEither(InputType.circle, PressType.down))
-        {
-            GoMainMenu();
+            if (InputManager.GetEither(InputType.x, PressType.down))
+            {
+                FMODUnity.RuntimeManager.PlayOneShot("event:/UI Click");
+                Resume();
+            }
+
+            if (InputManager.GetEither(InputType.circle, PressType.down))
+            {
+                FMODUnity.RuntimeManager.PlayOneShot("event:/UI Click");
+                GoMainMenu();
+            }
         }
         //Seizure check for ending game
         if (Player1Check.seizure == true && Player2Check.seizure == true)
@@ -64,6 +72,11 @@ public class MainMenu : MonoBehaviour
             playAgainUI.SetActive(true);
             Time.timeScale = 0f;
             GameIsPaused = true;
+            if (InputManager.GetEither(InputType.x, PressType.down))
+            {
+                FMODUnity.RuntimeManager.PlayOneShot("event:/UI Click");
+                GoMainMenu();
+            }
         }
     }
     public void Resume(){
