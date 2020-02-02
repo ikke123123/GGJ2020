@@ -32,13 +32,11 @@ public class ButtonSmasherManager : MonoBehaviour
     {
         if (disabled == false)
         {
-            ToggleObjects(true);
             currentLevel = Mathf.Clamp(currentLevel + increasePerTime, 0, 8);
             imageSelector.SetImage(Mathf.RoundToInt(currentLevel));
             imageManager.speedModifier = CodeLibrary.Remap(currentLevel, 0, 8, 0.1f, 1);
         } else
         {
-            ToggleObjects(false);
             currentLevel = 0;
             lastInput = InputType.circle;
         }
@@ -47,13 +45,6 @@ public class ButtonSmasherManager : MonoBehaviour
     private void Update()
     {
         if (AlternatingButton() && disabled == false) currentLevel += onPressChange;
-    }
-
-    private void ToggleObjects(bool set)
-    {
-        circle.gameObject.SetActive(set);
-        x.gameObject.SetActive(set);
-        imageSelector.gameObject.SetActive(set);
     }
 
     private bool AlternatingButton()
