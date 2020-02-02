@@ -173,9 +173,14 @@ public class CodeLibrary : MonoBehaviour
         return input2;
     }
 
-    public static float Reverse(float input, float scale = 1)
+    public static float ReverseBROKEN(float input, float scale = 1)
     {
         return (input - 1) * -1;
+    }
+
+    public static float Reverse(float input, float minCurrent, float maxCurrent, float desiredScale)
+    {
+        return (input - (maxCurrent - minCurrent)) * desiredScale;
     }
 
     public static bool CheckSameObjectType(object input1, object input2)

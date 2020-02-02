@@ -5,17 +5,18 @@ using UnityEngine.UI;
 
 public class ImageManager : MonoBehaviour
 {
-    [SerializeField] private PlayerType player;
+    [SerializeField] public PlayerType player;
 
     [Header("Images")]
     [SerializeField] private Image squareMarker;
     [SerializeField] private Image background;
+    [SerializeField] private Image squareUnhidden;
 
     [Header("Spawning")]
     [SerializeField] private float speed;
     [SerializeField] private float padding;
     [SerializeField] private GameObject prefab;
-    [SerializeField] private bool disabled = false;
+    [SerializeField] public bool disabled = false;
 
     [Header("Fading")]
     [SerializeField] private float borderRight;
@@ -27,7 +28,7 @@ public class ImageManager : MonoBehaviour
     [SerializeField] private Movement player2;
 
     [Header("Don't Touch")]
-    [SerializeField] private Buttons[] buttons;
+    [SerializeField] private ButtonType[] buttons;
 
     [Header("Debug")]
     [SerializeField] private int difficultyLevel;
@@ -38,19 +39,20 @@ public class ImageManager : MonoBehaviour
     [SerializeField] private Vector3 spawnVector;
     [SerializeField] private Quaternion spawnQuaternion = new Quaternion(0, 0, 0, 0);
     [SerializeField] private float verticalCenter;
-    [SerializeField] private ButtonType[] selectedOption;
     [SerializeField] private List<GameObject> instantiatedImages;
     [SerializeField] private float timer;
+    [SerializeField] public float speedModifier;
+    [SerializeField] private float speedtimer;
 
     private void Awake()
     {
         timer = 0;
         GetBounds(background, ref backgroundLeft, ref backgroundRight);
-        SelectButtons();
         markerRect = new Rect(squareMarker.rectTransform.localPosition.x, squareMarker.rectTransform.localPosition.y, 1, squareMarker.rectTransform.rect.height);
         spawnVector = new Vector3(backgroundLeft + padding, background.rectTransform.localPosition.y, 0);
         difficultyLevel = 1;
         NewRound();
+        speedtimer = 10;
     }
 
     private void FixedUpdate()
@@ -58,15 +60,25 @@ public class ImageManager : MonoBehaviour
         //Timekeeping
         if (Time.time >= timer && disabled == false)
         {
+            squareMarker.gameObject.SetActive(true);
+            background.gameObject.SetActive(true);
+            squareUnhidden.gameObject.SetActive(true);
             //Resets the timer
             timer = Time.time + Random.Range(0.75f, 3);
             //Spawns new object
             SpawnObject();
         }
-        //if (player1.seizure == false && player2.seizure == false)
-        //{
-        //    disabled = false;
-        //}
+        if (Time.time > speedtimer && disabled == false)
+        {
+            speed = speed * (speedModifier + 1);
+            speedtimer += 10;
+            SetSpeed(speed);
+        }
+        if (player1.seizure == false && player2.seizure == false && disabled == true)
+        {
+            disabled = false;
+            speedtimer = Time.time + 10;
+        }
     }
 
     //GameObjects will report when the object has not been destroyed at the end
@@ -84,10 +96,11 @@ public class ImageManager : MonoBehaviour
 
         foreach (InputType type in tempInputTypes)
         {
-            if (InputManager.Get(inputType, player, PressType.down))
+            if (InputManager.Get(type, player, PressType.down))
             {
                 DestroyThing(input);
                 ActivateSeizure();
+                return;
             }
         }
 
@@ -136,6 +149,7 @@ public class ImageManager : MonoBehaviour
     private void NewRound()
     {
         blocksToGo = difficultyLevel * 5;
+        FMODUnity.RuntimeManager.PlayOneShot("event:/Success");
     }
 
     private void ActivateSeizure()
@@ -143,12 +157,15 @@ public class ImageManager : MonoBehaviour
         BadClick();
         DestroyAllObjects();
         disabled = true;
+        squareMarker.gameObject.SetActive(false);
+        background.gameObject.SetActive(false);
+        squareUnhidden.gameObject.SetActive(false);
         if (player == PlayerType.Player1)
         {
             player1.seizure = true;
             return;
         }
-        //player2.seizure = true;
+        player2.seizure = true;
     }
 
     private void DestroyAllObjects()
@@ -170,33 +187,15 @@ public class ImageManager : MonoBehaviour
         rightBound = inputLocation + inputWidth * 0.5f;
     }
 
-    private void SelectButtons()
-    {
-        foreach (Buttons button in buttons)
-        {
-            if (button.player == player)
-            {
-                List<ButtonType> tempButtonType = new List<ButtonType>();
-                foreach (ButtonType buttonType in button.buttonTypes)
-                {
-                    tempButtonType.Add(buttonType);
-                }
-                selectedOption = tempButtonType.ToArray();
-                return;
-            }
-        }
-        Debug.LogError("Error, this shouldn't happen.");
-    }
-
     public void SpawnObject()
     {
-        int randomNum = Random.Range(0, selectedOption.Length);
+        int randomNum = Random.Range(0, buttons.Length);
 
         GameObject tempGameObject = Instantiate(prefab, transform);
         tempGameObject.GetComponent<RectTransform>().localPosition = spawnVector;
         tempGameObject.GetComponent<RectTransform>().localRotation = spawnQuaternion;
 
-        tempGameObject.GetComponent<Image>().sprite = selectedOption[randomNum].sprite;
+        tempGameObject.GetComponent<Image>().sprite = buttons[randomNum].sprite;
 
         tempGameObject.GetComponent<ImageSpeed>().speed.x = speed;
 
@@ -205,7 +204,9 @@ public class ImageManager : MonoBehaviour
         tempImageReporting.maxX = backgroundRight;
         tempImageReporting.minX = backgroundLeft;
         tempImageReporting.imageManager = this;
-        
+        tempImageReporting.inputType = buttons[randomNum].inputType;
+
+
 
         FadeManager tempFadeManager = tempGameObject.AddComponent<FadeManager>();
         tempFadeManager.stopFadeX = spawnVector.x + borderLeft;
@@ -214,13 +215,6 @@ public class ImageManager : MonoBehaviour
 
         instantiatedImages.Add(tempGameObject);
     }
-}
-
-[System.Serializable]
-public class Buttons
-{
-    [SerializeField] public PlayerType player;
-    [SerializeField] public ButtonType[] buttonTypes;
 }
 
 [System.Serializable]

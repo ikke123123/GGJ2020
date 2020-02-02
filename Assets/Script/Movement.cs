@@ -9,6 +9,8 @@ public class Movement : MonoBehaviour
     public float speed;
     private Rigidbody rb;
     private Animator anim;
+    public Check2 check2;
+    public Check check1;
     public bool seizure;
     private bool check = false;
     private float walkingspeed;
@@ -99,10 +101,13 @@ public class Movement : MonoBehaviour
             anim.SetBool("FallenTrigger", true);
             transform.rotation = Quaternion.Euler(0, 0, 0);
         }
-        else if (seizure == false)
+        else
         {
             speed = 400;
-        }
+            anim.SetBool("Walking", true);
+            anim.SetBool("Walking", false);
+            anim.SetBool("FallenTrigger", false);
+    }
     }
     private void Update()
     {
@@ -114,5 +119,41 @@ public class Movement : MonoBehaviour
                 check = true;
             }
         }
+        //if (test == true)
+        //{
+        //    if (InputManager.Get(InputType.reviving, player))
+        //     {
+        //        anim.SetBool("Walking", true);
+        //        anim.SetBool("Walking", false);
+        //        anim.SetBool("FallenTrigger", false);
+        //        seizure = false;
+        //        test = false;
+        //    }
+        //}
+
     }
+    private void OnTriggerEnter(Collider other)
+    {
+        //InputManager.Get(InputType.reviving, player, PressType.down)
+        //if (seizure == true && InputManager.Get(InputType.reviving, player))
+        //{
+        //    anim.SetBool("Walking", true);
+        //    anim.SetBool("Walking", false);
+        //    anim.SetBool("FallenTrigger", false);
+        //    seizure = false;
+        //}
+        //if (seizure == true && gameObject.tag == "PLayer")
+        //{
+        //    anim.SetBool("Walking", true);
+        //    anim.SetBool("Walking", false);
+        //    anim.SetBool("FallenTrigger", false);
+        //    seizure = false;
+        //}
+        if (other.gameObject.tag == "Player")
+        {
+            other.gameObject.GetComponent<Movement>().seizure = false;
+            FMODUnity.RuntimeManager.PlayOneShot("event:/Revive");
+        }
+    }
+
 }

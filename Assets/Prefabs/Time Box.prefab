@@ -9,6 +9,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2698536233168265843}
+  - component: {fileID: 1959273191733253156}
   m_Layer: 0
   m_Name: Time Box
   m_TagString: Untagged
@@ -39,6 +40,19 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 180, z: 0}
+--- !u!65 &1959273191733253156
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1380487086772392032}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 2.4961581, y: 6.431108, z: 1.2816192}
+  m_Center: {x: -2.277935, y: -1.4653618, z: 0.14081037}
 --- !u!1 &2547587386180897735
 GameObject:
   m_ObjectHideFlags: 0

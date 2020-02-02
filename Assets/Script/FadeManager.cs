@@ -5,10 +5,10 @@ using UnityEngine.UI;
 
 public class FadeManager : MonoBehaviour
 {
-    [HideInInspector] public float stopFadeX;
-    [HideInInspector] public float startFadeX;
-    [HideInInspector] public float fadeEndStop;
-    [HideInInspector] public bool selfDestruct = false;
+    public float stopFadeX;
+    public float startFadeX;
+    public float fadeEndStop;
+    public bool selfDestruct = false;
 
     private float startX;
     private RectTransform rt;
@@ -30,7 +30,7 @@ public class FadeManager : MonoBehaviour
         }
         else if (rt.localPosition.x >= startFadeX)
         {
-            image.color = CodeLibrary.ConvertToTransparent(image.color, CodeLibrary.Reverse(CodeLibrary.Remap(rt.localPosition.x, startFadeX, fadeEndStop, 0, 10f)));
+            
         }
         else
         {
@@ -41,12 +41,12 @@ public class FadeManager : MonoBehaviour
         {
             if (firstRun)
             {
-                startX = rt.localPosition.x;
-                stopFadeX = rt.localPosition.x + 100;
+                startFadeX = rt.localPosition.x;
+                fadeEndStop = rt.localPosition.x + 50;
                 firstRun = false;
             }
-            image.color = CodeLibrary.ConvertToTransparent(image.color, CodeLibrary.Reverse(CodeLibrary.Remap(rt.localPosition.x, startX, stopFadeX, 0, 1f)));
-            if (image.color.a == 0)
+            image.color = CodeLibrary.ConvertToTransparent(image.color, CodeLibrary.ReverseBROKEN(CodeLibrary.Remap(rt.localPosition.x, startFadeX, fadeEndStop, 0, 10f)));
+            if (image.color.a <= 0.1f)
             {
                 Destroy(gameObject);
             }
