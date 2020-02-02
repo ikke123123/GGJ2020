@@ -5,7 +5,7 @@
 			<value>Repairing</value>
 		</property>
 		<property name="outputFormat">
-			<value>2</value>
+			<value>1</value>
 		</property>
 		<relationship name="folder">
 			<destination>{8a6bbeae-26c3-4799-a97b-e020891d6dfe}</destination>
@@ -58,7 +58,11 @@
 			<destination>{f0410b3b-0ff6-444f-ab4b-6c26f1799ec3}</destination>
 		</relationship>
 	</object>
-	<object class="EventAutomatableProperties" id="{732d5ca0-f826-4b21-ae69-86a7d89016b8}" />
+	<object class="EventAutomatableProperties" id="{732d5ca0-f826-4b21-ae69-86a7d89016b8}">
+		<property name="maxVoices">
+			<value>1</value>
+		</property>
+	</object>
 	<object class="MarkerTrack" id="{3d5169f1-89cb-426f-a9b1-668cacd963f0}" />
 	<object class="GroupTrack" id="{c2d31102-25de-47f1-9039-5938830199b7}">
 		<relationship name="modules">
@@ -472,7 +476,6 @@
 	<object class="MixerBusEffectChain" id="{ca8b447c-d004-4f9b-85ac-2666492b3bd6}">
 		<relationship name="effects">
 			<destination>{3c39e31f-fd41-4d7d-8343-e516182b28a0}</destination>
-			<destination>{72ea41ea-1f46-4a06-b24b-5bda70815025}</destination>
 			<destination>{d212744a-bd86-49d7-9698-d8afb27ac84a}</destination>
 		</relationship>
 	</object>
@@ -497,7 +500,6 @@
 	</object>
 	<object class="MixerBusPanner" id="{d9097aaa-5972-4f12-a2cd-7cbd36174fab}" />
 	<object class="MixerBusFader" id="{3c39e31f-fd41-4d7d-8343-e516182b28a0}" />
-	<object class="SpatialiserEffect" id="{72ea41ea-1f46-4a06-b24b-5bda70815025}" />
 	<object class="SFXReverbEffect" id="{d212744a-bd86-49d7-9698-d8afb27ac84a}">
 		<property name="wetLevel">
 			<value>-14</value>

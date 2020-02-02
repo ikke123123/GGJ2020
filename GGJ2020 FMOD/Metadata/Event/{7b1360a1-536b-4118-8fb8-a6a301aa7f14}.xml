@@ -5,7 +5,7 @@
 			<value>Electrocute</value>
 		</property>
 		<property name="outputFormat">
-			<value>2</value>
+			<value>1</value>
 		</property>
 		<relationship name="folder">
 			<destination>{8a6bbeae-26c3-4799-a97b-e020891d6dfe}</destination>
@@ -116,7 +116,6 @@
 	<object class="MixerBusEffectChain" id="{c3f4cc48-2340-47be-b188-2cf3fa557c3f}">
 		<relationship name="effects">
 			<destination>{1eab2e47-629c-4a9b-8043-87e6ad97a4ad}</destination>
-			<destination>{ef40bce9-c582-47e9-8aa1-da3afff2b8d9}</destination>
 		</relationship>
 	</object>
 	<object class="MixerBusPanner" id="{90014984-6182-43cf-972d-f6d8bf5ceba6}" />
@@ -128,6 +127,5 @@
 	</object>
 	<object class="MixerBusPanner" id="{e5bdf640-9284-41c8-b088-fd6d19b8c986}" />
 	<object class="MixerBusFader" id="{1eab2e47-629c-4a9b-8043-87e6ad97a4ad}" />
-	<object class="SpatialiserEffect" id="{ef40bce9-c582-47e9-8aa1-da3afff2b8d9}" />
 	<object class="MixerBusFader" id="{075bba00-bce3-436e-a200-94a58ac92984}" />
 </objects>

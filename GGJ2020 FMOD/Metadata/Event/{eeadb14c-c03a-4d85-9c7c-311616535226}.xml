@@ -5,7 +5,7 @@
 			<value>Conveyor Belt</value>
 		</property>
 		<property name="outputFormat">
-			<value>2</value>
+			<value>1</value>
 		</property>
 		<relationship name="folder">
 			<destination>{8a6bbeae-26c3-4799-a97b-e020891d6dfe}</destination>
@@ -119,7 +119,6 @@
 	<object class="MixerBusEffectChain" id="{875a1f07-d012-4780-a98d-c67015a0698b}">
 		<relationship name="effects">
 			<destination>{9b7b822b-6934-4912-bd0f-eabb781ee684}</destination>
-			<destination>{0d947085-f284-45fd-900b-b4c7eeece69e}</destination>
 			<destination>{cd588c54-e83f-4264-a5b2-792c3faeef22}</destination>
 		</relationship>
 	</object>
@@ -141,7 +140,6 @@
 	</object>
 	<object class="MixerBusPanner" id="{89c5bc9f-faef-44b1-8adb-efbe2809c589}" />
 	<object class="MixerBusFader" id="{9b7b822b-6934-4912-bd0f-eabb781ee684}" />
-	<object class="SpatialiserEffect" id="{0d947085-f284-45fd-900b-b4c7eeece69e}" />
 	<object class="SFXReverbEffect" id="{cd588c54-e83f-4264-a5b2-792c3faeef22}">
 		<property name="wetLevel">
 			<value>-19</value>
