@@ -45,7 +45,7 @@ public class FadeManager : MonoBehaviour
                 fadeEndStop = rt.localPosition.x + 50;
                 firstRun = false;
             }
-            image.color = CodeLibrary.ConvertToTransparent(image.color, CodeLibrary.Reverse(CodeLibrary.Remap(rt.localPosition.x, startFadeX, fadeEndStop, 0, 10f)));
+            image.color = CodeLibrary.ConvertToTransparent(image.color, CodeLibrary.ReverseBROKEN(CodeLibrary.Remap(rt.localPosition.x, startFadeX, fadeEndStop, 0, 10f)));
             if (image.color.a <= 0.1f)
             {
                 Destroy(gameObject);

@@ -37,7 +37,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: 800, y: -420}
-  m_SizeDelta: {x: 80, y: 80}
+  m_SizeDelta: {x: 113, y: 80}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &7567296062237880674
 CanvasRenderer:
@@ -109,3 +109,4 @@ MonoBehaviour:
   imageManager: {fileID: 0}
   minX: 0
   maxX: 0
+  inputType: 0

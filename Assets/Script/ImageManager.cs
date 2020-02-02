@@ -16,7 +16,7 @@ public class ImageManager : MonoBehaviour
     [SerializeField] private float speed;
     [SerializeField] private float padding;
     [SerializeField] private GameObject prefab;
-    [SerializeField] private bool disabled = false;
+    [SerializeField] public bool disabled = false;
 
     [Header("Fading")]
     [SerializeField] private float borderRight;
@@ -28,7 +28,7 @@ public class ImageManager : MonoBehaviour
     [SerializeField] private Movement player2;
 
     [Header("Don't Touch")]
-    [SerializeField] private Buttons[] buttons;
+    [SerializeField] private ButtonType[] buttons;
 
     [Header("Debug")]
     [SerializeField] private int difficultyLevel;
@@ -39,19 +39,20 @@ public class ImageManager : MonoBehaviour
     [SerializeField] private Vector3 spawnVector;
     [SerializeField] private Quaternion spawnQuaternion = new Quaternion(0, 0, 0, 0);
     [SerializeField] private float verticalCenter;
-    [SerializeField] private ButtonType[] selectedOption;
     [SerializeField] private List<GameObject> instantiatedImages;
     [SerializeField] private float timer;
+    [SerializeField] public float speedModifier;
+    [SerializeField] private float speedtimer;
 
     private void Awake()
     {
         timer = 0;
         GetBounds(background, ref backgroundLeft, ref backgroundRight);
-        SelectButtons();
         markerRect = new Rect(squareMarker.rectTransform.localPosition.x, squareMarker.rectTransform.localPosition.y, 1, squareMarker.rectTransform.rect.height);
         spawnVector = new Vector3(backgroundLeft + padding, background.rectTransform.localPosition.y, 0);
         difficultyLevel = 1;
         NewRound();
+        speedtimer = 10;
     }
 
     private void FixedUpdate()
@@ -67,9 +68,16 @@ public class ImageManager : MonoBehaviour
             //Spawns new object
             SpawnObject();
         }
-        if (player1.seizure == false && player2.seizure == false)
+        if (Time.time > speedtimer && disabled == false)
+        {
+            speed = speed * (speedModifier + 1);
+            speedtimer += 10;
+            SetSpeed(speed);
+        }
+        if (player1.seizure == false && player2.seizure == false && disabled == true)
         {
             disabled = false;
+            speedtimer = Time.time + 10;
         }
     }
 
@@ -90,7 +98,6 @@ public class ImageManager : MonoBehaviour
         {
             if (InputManager.Get(type, player, PressType.down))
             {
-                Debug.Log("Sup nibba");
                 DestroyThing(input);
                 ActivateSeizure();
                 return;
@@ -99,7 +106,6 @@ public class ImageManager : MonoBehaviour
 
         if (InputManager.Get(inputType, player, PressType.down))
         {
-            Debug.Log("Epic gamer moment");
             DestroyThing(input);
             GoodClick();
         }
@@ -180,33 +186,15 @@ public class ImageManager : MonoBehaviour
         rightBound = inputLocation + inputWidth * 0.5f;
     }
 
-    private void SelectButtons()
-    {
-        foreach (Buttons button in buttons)
-        {
-            if (button.player == player)
-            {
-                List<ButtonType> tempButtonType = new List<ButtonType>();
-                foreach (ButtonType buttonType in button.buttonTypes)
-                {
-                    tempButtonType.Add(buttonType);
-                }
-                selectedOption = tempButtonType.ToArray();
-                return;
-            }
-        }
-        Debug.LogError("Error, this shouldn't happen.");
-    }
-
     public void SpawnObject()
     {
-        int randomNum = Random.Range(0, selectedOption.Length);
+        int randomNum = Random.Range(0, buttons.Length);
 
         GameObject tempGameObject = Instantiate(prefab, transform);
         tempGameObject.GetComponent<RectTransform>().localPosition = spawnVector;
         tempGameObject.GetComponent<RectTransform>().localRotation = spawnQuaternion;
 
-        tempGameObject.GetComponent<Image>().sprite = selectedOption[randomNum].sprite;
+        tempGameObject.GetComponent<Image>().sprite = buttons[randomNum].sprite;
 
         tempGameObject.GetComponent<ImageSpeed>().speed.x = speed;
 
@@ -215,7 +203,7 @@ public class ImageManager : MonoBehaviour
         tempImageReporting.maxX = backgroundRight;
         tempImageReporting.minX = backgroundLeft;
         tempImageReporting.imageManager = this;
-        tempImageReporting.inputType = selectedOption[randomNum].inputType;
+        tempImageReporting.inputType = buttons[randomNum].inputType;
 
 
 
@@ -226,13 +214,6 @@ public class ImageManager : MonoBehaviour
 
         instantiatedImages.Add(tempGameObject);
     }
-}
-
-[System.Serializable]
-public class Buttons
-{
-    [SerializeField] public PlayerType player;
-    [SerializeField] public ButtonType[] buttonTypes;
 }
 
 [System.Serializable]
