@@ -152,7 +152,10 @@ public class Movement : MonoBehaviour
         if (other.gameObject.tag == "Player")
         {
             other.gameObject.GetComponent<Movement>().seizure = false;
-            FMODUnity.RuntimeManager.PlayOneShot("event:/Revive");
+            if (seizure == true){
+                FMODUnity.RuntimeManager.PlayOneShot("event:/Revive");
+            }
+           
         }
     }
 

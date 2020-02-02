@@ -5,7 +5,7 @@
 			<value>Success</value>
 		</property>
 		<property name="outputFormat">
-			<value>2</value>
+			<value>1</value>
 		</property>
 		<relationship name="folder">
 			<destination>{8a6bbeae-26c3-4799-a97b-e020891d6dfe}</destination>
@@ -116,7 +116,6 @@
 	<object class="MixerBusEffectChain" id="{f77428d4-9100-4534-98fa-7e637d67b43c}">
 		<relationship name="effects">
 			<destination>{b78d7644-01bf-40c9-8a27-e7e0f63b0a64}</destination>
-			<destination>{5e36452f-c004-4f6f-ada8-44204f055bbd}</destination>
 		</relationship>
 	</object>
 	<object class="MixerBusPanner" id="{797b5121-c09e-46b6-a32d-4c4ad40338e9}" />
@@ -129,7 +128,6 @@
 	</object>
 	<object class="MixerBusPanner" id="{b286cb18-9892-4632-95b4-31e1a1ae5182}" />
 	<object class="MixerBusFader" id="{b78d7644-01bf-40c9-8a27-e7e0f63b0a64}" />
-	<object class="SpatialiserEffect" id="{5e36452f-c004-4f6f-ada8-44204f055bbd}" />
 	<object class="MixerBusFader" id="{ebc6db41-2e67-43fe-83f9-d98caee0de49}" />
 	<object class="SFXReverbEffect" id="{a4be7ae7-0723-46ec-b4ee-5ca16aa4f63b}">
 		<property name="wetLevel">
