@@ -53,6 +53,7 @@ MonoBehaviour:
   player: 1
   squareMarker: {fileID: 1642134219840770907}
   background: {fileID: 1642134218746311389}
+  squareUnhidden: {fileID: 0}
   speed: 2
   padding: 40
   prefab: {fileID: 7057998676382581701, guid: eef7973b3e354d345878f808dc5fea57, type: 3}
@@ -79,9 +80,9 @@ MonoBehaviour:
       sprite: {fileID: 21300000, guid: bad202c01bd41d3499fa6b6f2679e857, type: 3}
     - inputType: 1
       sprite: {fileID: 21300000, guid: 81feb0c43b086fa44b964f0a12d3932d, type: 3}
-    - inputType: 0
-      sprite: {fileID: 21300000, guid: 1c4f5605aab7b5742b422923f07645d5, type: 3}
     - inputType: 2
+      sprite: {fileID: 21300000, guid: 1c4f5605aab7b5742b422923f07645d5, type: 3}
+    - inputType: 0
       sprite: {fileID: 21300000, guid: c40232c8cd392334f9aaedadda0c082b, type: 3}
   difficultyLevel: 0
   blocksToGo: 0

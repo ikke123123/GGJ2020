@@ -5,11 +5,12 @@ using UnityEngine.UI;
 
 public class ImageManager : MonoBehaviour
 {
-    [SerializeField] private PlayerType player;
+    [SerializeField] public PlayerType player;
 
     [Header("Images")]
     [SerializeField] private Image squareMarker;
     [SerializeField] private Image background;
+    [SerializeField] private Image squareUnhidden;
 
     [Header("Spawning")]
     [SerializeField] private float speed;
@@ -58,15 +59,18 @@ public class ImageManager : MonoBehaviour
         //Timekeeping
         if (Time.time >= timer && disabled == false)
         {
+            squareMarker.gameObject.SetActive(true);
+            background.gameObject.SetActive(true);
+            squareUnhidden.gameObject.SetActive(true);
             //Resets the timer
             timer = Time.time + Random.Range(0.75f, 3);
             //Spawns new object
             SpawnObject();
         }
-        //if (player1.seizure == false && player2.seizure == false)
-        //{
-        //    disabled = false;
-        //}
+        if (player1.seizure == false && player2.seizure == false)
+        {
+            disabled = false;
+        }
     }
 
     //GameObjects will report when the object has not been destroyed at the end
@@ -84,15 +88,18 @@ public class ImageManager : MonoBehaviour
 
         foreach (InputType type in tempInputTypes)
         {
-            if (InputManager.Get(inputType, player, PressType.down))
+            if (InputManager.Get(type, player, PressType.down))
             {
+                Debug.Log("Sup nibba");
                 DestroyThing(input);
                 ActivateSeizure();
+                return;
             }
         }
 
         if (InputManager.Get(inputType, player, PressType.down))
         {
+            Debug.Log("Epic gamer moment");
             DestroyThing(input);
             GoodClick();
         }
@@ -143,12 +150,15 @@ public class ImageManager : MonoBehaviour
         BadClick();
         DestroyAllObjects();
         disabled = true;
+        squareMarker.gameObject.SetActive(false);
+        background.gameObject.SetActive(false);
+        squareUnhidden.gameObject.SetActive(false);
         if (player == PlayerType.Player1)
         {
             player1.seizure = true;
             return;
         }
-        //player2.seizure = true;
+        player2.seizure = true;
     }
 
     private void DestroyAllObjects()
@@ -205,7 +215,9 @@ public class ImageManager : MonoBehaviour
         tempImageReporting.maxX = backgroundRight;
         tempImageReporting.minX = backgroundLeft;
         tempImageReporting.imageManager = this;
-        
+        tempImageReporting.inputType = selectedOption[randomNum].inputType;
+
+
 
         FadeManager tempFadeManager = tempGameObject.AddComponent<FadeManager>();
         tempFadeManager.stopFadeX = spawnVector.x + borderLeft;
