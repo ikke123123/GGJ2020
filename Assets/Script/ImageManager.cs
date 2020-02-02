@@ -149,6 +149,7 @@ public class ImageManager : MonoBehaviour
     private void NewRound()
     {
         blocksToGo = difficultyLevel * 5;
+        FMODUnity.RuntimeManager.PlayOneShot("event:/Success");
     }
 
     private void ActivateSeizure()
