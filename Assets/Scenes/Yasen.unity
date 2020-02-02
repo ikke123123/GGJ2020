@@ -1036,6 +1036,121 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 1546625338}
   m_PrefabAsset: {fileID: 0}
+--- !u!1001 &1591803212
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 2088834870}
+    m_Modifications:
+    - target: {fileID: -6860305590714054535, guid: 5b0e8823477b0e54d9ecd47d5b9cb1c2,
+        type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 884c939192e152d49845f598ef90ca20, type: 2}
+    - target: {fileID: -6054058774237248251, guid: 5b0e8823477b0e54d9ecd47d5b9cb1c2,
+        type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: a50d58d68a44a45419cdea98145d088f, type: 2}
+    - target: {fileID: -4648932888390086202, guid: 5b0e8823477b0e54d9ecd47d5b9cb1c2,
+        type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 884c939192e152d49845f598ef90ca20, type: 2}
+    - target: {fileID: -4216859302048453862, guid: 5b0e8823477b0e54d9ecd47d5b9cb1c2,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 9.105545
+      objectReference: {fileID: 0}
+    - target: {fileID: -4216859302048453862, guid: 5b0e8823477b0e54d9ecd47d5b9cb1c2,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 3.7301266
+      objectReference: {fileID: 0}
+    - target: {fileID: -4216859302048453862, guid: 5b0e8823477b0e54d9ecd47d5b9cb1c2,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 18.0298
+      objectReference: {fileID: 0}
+    - target: {fileID: -4216859302048453862, guid: 5b0e8823477b0e54d9ecd47d5b9cb1c2,
+        type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: -4216859302048453862, guid: 5b0e8823477b0e54d9ecd47d5b9cb1c2,
+        type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: -4216859302048453862, guid: 5b0e8823477b0e54d9ecd47d5b9cb1c2,
+        type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: -4216859302048453862, guid: 5b0e8823477b0e54d9ecd47d5b9cb1c2,
+        type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: -4216859302048453862, guid: 5b0e8823477b0e54d9ecd47d5b9cb1c2,
+        type: 3}
+      propertyPath: m_RootOrder
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -4216859302048453862, guid: 5b0e8823477b0e54d9ecd47d5b9cb1c2,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -4216859302048453862, guid: 5b0e8823477b0e54d9ecd47d5b9cb1c2,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -4216859302048453862, guid: 5b0e8823477b0e54d9ecd47d5b9cb1c2,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -927199367670048503, guid: 5b0e8823477b0e54d9ecd47d5b9cb1c2,
+        type: 3}
+      propertyPath: m_Name
+      value: Shiny small robot
+      objectReference: {fileID: 0}
+    - target: {fileID: -239555428307642338, guid: 5b0e8823477b0e54d9ecd47d5b9cb1c2,
+        type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 884c939192e152d49845f598ef90ca20, type: 2}
+    - target: {fileID: 1711277887553122256, guid: 5b0e8823477b0e54d9ecd47d5b9cb1c2,
+        type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 884c939192e152d49845f598ef90ca20, type: 2}
+    - target: {fileID: 5834953974792395099, guid: 5b0e8823477b0e54d9ecd47d5b9cb1c2,
+        type: 3}
+      propertyPath: m_Materials.Array.data[1]
+      value: 
+      objectReference: {fileID: 2100000, guid: 7e9e872a666b32d438a40908a8287483, type: 2}
+    - target: {fileID: 5834953974792395099, guid: 5b0e8823477b0e54d9ecd47d5b9cb1c2,
+        type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: da2b8d80d1ae90f499576f2ec6b65e3a, type: 2}
+    - target: {fileID: 7264955841813328438, guid: 5b0e8823477b0e54d9ecd47d5b9cb1c2,
+        type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 884c939192e152d49845f598ef90ca20, type: 2}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 5b0e8823477b0e54d9ecd47d5b9cb1c2, type: 3}
+--- !u!4 &1591803213 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: -4216859302048453862, guid: 5b0e8823477b0e54d9ecd47d5b9cb1c2,
+    type: 3}
+  m_PrefabInstance: {fileID: 1591803212}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1889646985
 GameObject:
   m_ObjectHideFlags: 0
@@ -1097,6 +1212,37 @@ Transform:
   - {fileID: 956455677}
   m_Father: {fileID: 1221745016}
   m_RootOrder: 6
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &2088834869
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2088834870}
+  m_Layer: 0
+  m_Name: Shiny Small Robot
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &2088834870
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2088834869}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 15.794455, y: -2.0401266, z: -16.3398}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children:
+  - {fileID: 1591803213}
+  m_Father: {fileID: 0}
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &2128925859
 PrefabInstance:
