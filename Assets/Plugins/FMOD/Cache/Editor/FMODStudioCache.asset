@@ -32,7 +32,7 @@ MonoBehaviour:
   Path: event:/Hammer
   guid: f25039b91f7f484aad77e70b6999a64b
   Banks:
-  - {fileID: 5339785194487570377}
+  - {fileID: 5126930836718494582}
   IsStream: 0
   Is3D: 1
   IsOneShot: 1
@@ -55,7 +55,7 @@ MonoBehaviour:
   Path: event:/UI Click
   guid: 5238c750822ce54fbd2e17df8f2c07dd
   Banks:
-  - {fileID: 5339785194487570377}
+  - {fileID: 5126930836718494582}
   IsStream: 0
   Is3D: 0
   IsOneShot: 1
@@ -78,7 +78,7 @@ MonoBehaviour:
   Path: event:/MenuMusic
   guid: 336483c2d8de1145a1c3931cf513c38f
   Banks:
-  - {fileID: 5339785194487570377}
+  - {fileID: 5126930836718494582}
   IsStream: 1
   Is3D: 0
   IsOneShot: 0
@@ -101,7 +101,7 @@ MonoBehaviour:
   Path: event:/Electrocute
   guid: a160137b6b5318418fb8a6a301aa7f14
   Banks:
-  - {fileID: 5339785194487570377}
+  - {fileID: 5126930836718494582}
   IsStream: 0
   Is3D: 1
   IsOneShot: 1
@@ -141,7 +141,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Path: GGJ2020 FMOD/Build/Desktop/Master.strings.bank
   SubDir: 
-  lastModified: 637162405498804512
+  lastModified: 637162089036118310
   LoadResult: 0
   FileSizes:
   - Name: Desktop
@@ -162,12 +162,12 @@ MonoBehaviour:
   Path: event:/Footsteps2D
   guid: ce3f54c572e79f4fb515f53e9ffd67d4
   Banks:
-  - {fileID: 5339785194487570377}
+  - {fileID: 5126930836718494582}
   IsStream: 0
   Is3D: 0
   IsOneShot: 1
   Parameters:
-  - {fileID: 6323128619467415834}
+  - {fileID: 6882420190933616002}
   MinDistance: 0
   MaxDistance: 0
   Length: 0
@@ -202,7 +202,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   EditorBanks:
   - {fileID: -2432949823213349863}
-  - {fileID: 5339785194487570377}
+  - {fileID: 5126930836718494582}
   EditorEvents:
   - {fileID: 3423046764709626231}
   - {fileID: 7444770738465205565}
@@ -217,10 +217,10 @@ MonoBehaviour:
   - {fileID: -6776587254334647500}
   EditorParameters: []
   MasterBanks:
-  - {fileID: 5339785194487570377}
+  - {fileID: 5126930836718494582}
   StringsBanks:
   - {fileID: -2432949823213349863}
-  stringsBankWriteTime: 637162405498804512
+  stringsBankWriteTime: 637162089036118310
   cacheVersion: 3
 --- !u!114 &3310450561600725961
 MonoBehaviour:
@@ -254,7 +254,7 @@ MonoBehaviour:
   Path: event:/Revive
   guid: 06ee01ff5aa47b47b4ab51a2245675c5
   Banks:
-  - {fileID: 5339785194487570377}
+  - {fileID: 5126930836718494582}
   IsStream: 0
   Is3D: 0
   IsOneShot: 1
@@ -262,6 +262,23 @@ MonoBehaviour:
   MinDistance: 0
   MaxDistance: 0
   Length: 1200
+--- !u!114 &3667179059678099562
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
+  m_Name: parameter:/Footsteps/Material
+  m_EditorClassIdentifier: 
+  Name: Material
+  Min: 1
+  Max: 3
+  Default: 1
+  Exists: 1
 --- !u!114 &4094096584787853492
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -277,12 +294,12 @@ MonoBehaviour:
   Path: event:/Footsteps
   guid: 3f69fa6bc8c3864395686761b078a5ac
   Banks:
-  - {fileID: 5339785194487570377}
+  - {fileID: 5126930836718494582}
   IsStream: 0
   Is3D: 1
   IsOneShot: 1
   Parameters:
-  - {fileID: -6913294964597111943}
+  - {fileID: 3667179059678099562}
   MinDistance: 1
   MaxDistance: 20
   Length: 0
@@ -301,7 +318,7 @@ MonoBehaviour:
   Path: event:/Conveyor Belt
   guid: 4cb1adee3ac0854d9c7c311616535226
   Banks:
-  - {fileID: 5339785194487570377}
+  - {fileID: 5126930836718494582}
   IsStream: 0
   Is3D: 1
   IsOneShot: 1
@@ -309,6 +326,24 @@ MonoBehaviour:
   MinDistance: 1
   MaxDistance: 20
   Length: 2801
+--- !u!114 &5126930836718494582
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c18180ecb35941f4682ae60107b85b7c, type: 3}
+  m_Name: bank:/Master.bank
+  m_EditorClassIdentifier: 
+  Path: GGJ2020 FMOD/Build/Desktop/Master.bank
+  SubDir: 
+  lastModified: 637162089036108333
+  LoadResult: 0
+  FileSizes: []
+  Exists: 1
 --- !u!114 &5249314945327529026
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -324,7 +359,7 @@ MonoBehaviour:
   Path: event:/Repairing
   guid: c52d8a1ec1e00f459015b3540137b363
   Banks:
-  - {fileID: 5339785194487570377}
+  - {fileID: 5126930836718494582}
   IsStream: 0
   Is3D: 1
   IsOneShot: 0
@@ -367,6 +402,23 @@ MonoBehaviour:
   Max: 3
   Default: 1
   Exists: 1
+--- !u!114 &6882420190933616002
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
+  m_Name: parameter:/Footsteps2D/Material
+  m_EditorClassIdentifier: 
+  Name: Material
+  Min: 1
+  Max: 3
+  Default: 1
+  Exists: 1
 --- !u!114 &7236857874683769972
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -382,7 +434,7 @@ MonoBehaviour:
   Path: event:/Success
   guid: 693a708edde8c54a8f3f3982a5058c09
   Banks:
-  - {fileID: 5339785194487570377}
+  - {fileID: 5126930836718494582}
   IsStream: 0
   Is3D: 1
   IsOneShot: 1
@@ -405,7 +457,7 @@ MonoBehaviour:
   Path: event:/GamePlayMusic
   guid: 10032ab9e30aed4489ab9f5208f8fe9f
   Banks:
-  - {fileID: 5339785194487570377}
+  - {fileID: 5126930836718494582}
   IsStream: 1
   Is3D: 0
   IsOneShot: 0
